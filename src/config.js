@@ -5,7 +5,7 @@ require('dotenv').config()
 
 
 const API_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = 'process.env.REACT_APP_MOVIE_API_KEY';
+const API_KEY = process.env.REACT_APP_MOVIE_API_KEY;
 const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';

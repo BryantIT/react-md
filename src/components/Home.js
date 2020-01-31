@@ -22,14 +22,15 @@ const Home = () => {
 
   const fetchMovies =  async endpoint => {
     setError(false);
-    setLoading(true)
+    setLoading(true);
 
     try {
       const result = await (await fetch(endpoint)).json();
+      console.log(result)
       setState(prev => ({
         ...prev,
         movies: [...result.results],
-        heroImage: prev.heroImage // result.results[0],
+        heroImage: prev.heroImage || result.results[0],
         currentPage: result.page,
         totalPages: result.total_pages,
       }));
@@ -39,6 +40,10 @@ const Home = () => {
     }
     setLoading(false);
   }
+
+  useEffect(() => {
+    fetchMovies(`${API_URL}movie/popular?api_key=${API_KEY}`);
+  }, [])
 
   return (
     <>
